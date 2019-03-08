@@ -18,3 +18,24 @@
 @import "reset.scss";
 @import "bootstrap";
 
+/* index */
+
+.h1 {
+	margin-bottom: 50px;
+}
+.product-cards {
+	ul {
+		li {
+			margin-bottom: 20px;
+			.product-card {
+				border: 1px solid #666666;
+				padding: 10px;
+			}
+			.detail {
+				border: 1px solid #666666;
+				border-top: none;
+				padding: 10px;
+			}
+		}
+	}
+}

@@ -4,11 +4,13 @@
 	%ul.row
 		- @products.each do |product|
 			%li.col-md-6
-				%h3
-					=product.name
-				%p
-					=product.description
-				%p
-					=product.price_unit
-				%p
-					=link_to "詳細"
+				%div.product-card
+					%h3
+						=product.name
+					%p
+						=product.description
+					%p
+						=product.price_unit #from product_decorator
+				%div.detail
+					%p
+						=link_to "詳細"
