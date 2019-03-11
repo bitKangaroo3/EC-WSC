@@ -5,12 +5,12 @@
 		- @products.each do |product|
 			%li.col-md-6
 				%div.product-card
-					%h3
+					=image_tag product.photo.to_s
+					%span
 						=product.name
-					%p
-						=product.description
-					%p
+						(
 						=product.price_unit #from product_decorator
+						)
 				%div.detail
 					%p
-						=link_to "詳細"
+						=product.description

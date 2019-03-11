@@ -14,4 +14,5 @@
       %p.notice= notice
     - elsif alert
       %p.alert= alert
+    %p.new= link_to "商品登録", new_product_path
     = yield

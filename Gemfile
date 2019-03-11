@@ -51,6 +51,7 @@ gem 'jquery-rails'
 gem 'active_decorator'
 # form
 gem 'simple_form'
+gem 'carrierwave', '~> 1.0'
 
 
 group :development, :test do
