@@ -49,6 +49,8 @@ gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
 # active decorator
 gem 'active_decorator'
+# form
+gem 'simple_form'
 
 
 group :development, :test do
