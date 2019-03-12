@@ -10,6 +10,9 @@ class ProductsController < ApplicationController
 			render :new
 		end
 	end
+	def show
+		@product = Product.find_by(params[:id])
+	end
 
 
 	private
