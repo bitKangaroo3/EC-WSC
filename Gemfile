@@ -52,6 +52,8 @@ gem 'active_decorator'
 # form
 gem 'simple_form'
 gem 'carrierwave', '~> 1.0'
+#hash
+gem "hashid-rails", "~> 1.0"
 
 
 group :development, :test do

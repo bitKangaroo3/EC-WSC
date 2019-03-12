@@ -14,4 +14,5 @@
 class Product < ApplicationRecord
 	mount_uploader :photo, AvatarUploader
 	serialize :avatars, JSON # If you use SQLite, add this line.
+	include Hashid::Rails # hash id
 end

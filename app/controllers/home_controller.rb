@@ -5,5 +5,5 @@ class HomeController < ApplicationController
 		end
 
 		@products = Product.all
-  end
+	end
 end
