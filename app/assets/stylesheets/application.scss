@@ -29,19 +29,16 @@
 			margin-bottom: 20px;
 			.product-card {
 				border: 1px solid #666666;
-
+				position: relative;
 				img {
 					max-width: 100%;
-
 				}
-				span {
+				p {
 					position: absolute;
 					color: white;
-					width: 70%;
 					font-size: 20px;
-					bottom: 90px;
-					left: 30px;
-					z-index: 10000;
+					padding: 0 10px;
+					bottom: 0;
 				}
 			}
 			.detail {

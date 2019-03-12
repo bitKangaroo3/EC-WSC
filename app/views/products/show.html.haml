@@ -1,0 +1,12 @@
+!!!
+= link_to "商品一覧へ", root_path
+%div.container.mx-auto.text-center
+	.w-auto= image_tag @product.photo.to_s
+
+	%div.card.mx-auto.w-75.text-left.my-5.p-4
+		%h2.card-title.mb-4= @product.name
+		%p.card-subtitle= @product.description
+		%p.card-text= @product.price_unit
+
+	%button.btn.btn-info.w-100.mb-5.py-3
+		買い物かごに入れる
