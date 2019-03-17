@@ -1,6 +1,7 @@
 class BasketProductsController < ApplicationController
 	def create
-		bp_c = BasketProduct.new(product_id: params[:product_id], basket_id: params[:basket_id])
+		bp_c = BasketProduct.new(product_id: params[:product_id],
+														basket_id: params[:basket_id])
 		if bp_c.save
 			redirect_to basket_path
 		else
