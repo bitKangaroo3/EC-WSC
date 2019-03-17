@@ -11,5 +11,8 @@
 
 class BasketProduct < ApplicationRecord
 	belongs_to :basket
+	belongs_to :product
 	has_many :Products, dependent: :destroy
+
+	validates :basket_id, :uniqueness => {:scope => :product_id}
 end

@@ -6,7 +6,5 @@ class BasketsController < ApplicationController
 		basket_products.each do |basket_product|
 			@products << basket_product.product_id
 		end
-
-
 	end
 end

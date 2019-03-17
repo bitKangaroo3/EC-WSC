@@ -8,4 +8,4 @@
 		%p.card-subtitle= @product.description
 		%p.card-text= @product.price_unit
 
-	= link_to "買い物かごに入れる", basket_path(:id), class: "btn btn-info w-75 mb-5 py-3"
+	= button_to "買い物かごに入れる", basket_products_path(product_id: @product.id, basket_id: @basket.id), class: "btn btn-info w-75 mb-5 py-3"

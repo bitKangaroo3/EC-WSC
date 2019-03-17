@@ -12,6 +12,7 @@ class ProductsController < ApplicationController
 	end
 	def show
 		@product = Product.find(params[:id])
+		@basket = Basket.find(current_user.id)
 	end
 
 
