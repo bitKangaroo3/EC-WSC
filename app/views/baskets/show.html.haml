@@ -1,0 +1,7 @@
+%h1 買い物かご
+- @products.each do |product|
+	- product = Product.find_by(id: product)
+	= image_tag product.photo.to_s
+	= product.name
+	= product.price
+	= link_to "買い物かごから削除", basket_product_path(product.id), method: :DELETE
