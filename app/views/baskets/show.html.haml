@@ -1,5 +1,5 @@
 %div.container.mx-auto.text-center
-	%h1 買い物かご
+	%h1.mb-5 買い物かご
 	- @products.each do |product|
 		- product = Product.find_by(id: product)
 		%div.card.mb-3
@@ -9,5 +9,7 @@
 				%div.col-md-8.p-3
 					%card-body.text-left
 						%h2.card-title= product.name
-						.card-text= product.price
+						=# Decoratorのおまじない
+						- ActiveDecorator::Decorator.instance.decorate(product)
+						.card-text.mb-auto= product.price_unit
 						.text-left= link_to "買い物かごから削除", basket_product_path(product.id), method: :DELETE, class: "card-text"
