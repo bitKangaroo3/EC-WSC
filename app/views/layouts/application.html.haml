@@ -8,14 +8,15 @@
 		= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
 		= javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 	%body
+		- if notice
+			%p.notice= notice
+		- elsif alert
+			%p.alert= alert
 		- if user_signed_in?
 			%p= link_to "sign_out", destroy_user_session_path, method: :delete
 			%p= link_to "商品一覧へ", root_path
 			%p= link_to "商品登録する", new_product_path
 			%p= link_to "買い物かごを見る", basket_path
-		- if notice
-			%p.notice= notice
-		- elsif alert
-			%p.alert= alert
+
 
 		= yield

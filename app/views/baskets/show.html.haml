@@ -1,7 +1,13 @@
-%h1 買い物かご
-- @products.each do |product|
-	- product = Product.find_by(id: product)
-	= image_tag product.photo.to_s
-	= product.name
-	= product.price
-	= link_to "買い物かごから削除", basket_product_path(product.id), method: :DELETE
+%div.container.mx-auto.text-center
+	%h1 買い物かご
+	- @products.each do |product|
+		- product = Product.find_by(id: product)
+		%div.card.mb-3
+			%div.row.no-gutters
+				%div.col-md-4
+					= image_tag product.photo.to_s, class: "card-img"
+				%div.col-md-8.p-3
+					%card-body.text-left
+						%h2.card-title= product.name
+						.card-text= product.price
+						.text-left= link_to "買い物かごから削除", basket_product_path(product.id), method: :DELETE, class: "card-text"
