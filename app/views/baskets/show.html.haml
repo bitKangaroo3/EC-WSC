@@ -11,5 +11,19 @@
 						%h2.card-title= product.name
 						=# Decoratorのおまじない
 						- ActiveDecorator::Decorator.instance.decorate(product)
-						.card-text.mb-auto= product.price_unit
-						.text-left= link_to "買い物かごから削除", basket_product_path(product.id), method: :DELETE, class: "card-text"
+						.h4.card-text.mb-auto= product.price_unit
+						.mt-3.text-left= link_to "買い物かごから削除", basket_product_path(product.id), method: :DELETE, class: "card-text"
+
+	- @amount = 0
+	-@products.each do |product|
+		- product = Product.find_by(id: product)
+		- @price = product.price.to_i
+		- if product.unit == 'dollar'
+			=# ▼後々に自動で取得出来るようにしたい
+			- @price *= 130
+		- @amount += @price
+	%p.text-right.mt-5
+		%span.h5 合計金額　
+		%span.h1= number_to_currency(@amount, :delimiter => ",", :precision => 0, :unit => "")
+		%span.h5 円
+	%p.text-right ※ドルは自動で円に換算されます

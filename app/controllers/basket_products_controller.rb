@@ -12,7 +12,7 @@ class BasketProductsController < ApplicationController
 	def destroy
 		bp_d = BasketProduct.find_by(product_id: params[:id])
 		bp_d.delete
-		redirect_to root_path
+		redirect_to basket_path
 	end
 
 	private
