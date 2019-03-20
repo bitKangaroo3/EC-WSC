@@ -9,6 +9,11 @@ class HomeController < ApplicationController
 				b = Basket.new(user_id: current_user.id)
 				b.save
 			end
+			@purchase_record = PurchaseRecord.find_by(user_id: current_user.id)
+			if @purchase_record == nil
+				b = PurchaseRecord.new(user_id: current_user.id)
+				b.save
+			end
 		end
 
 		@products = Product.all

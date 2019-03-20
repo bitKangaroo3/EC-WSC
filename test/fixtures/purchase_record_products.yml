@@ -1,0 +1,20 @@
+# == Schema Information
+#
+# Table name: purchase_record_products
+#
+#  id                 :integer          not null, primary key
+#  product_id         :integer
+#  purchase_record_id :integer
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  products_id: 1
+  purchase_records_id: 1
+
+two:
+  products_id: 1
+  purchase_records_id: 1

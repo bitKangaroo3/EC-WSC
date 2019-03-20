@@ -1,0 +1,2 @@
+module PurchaseRecordProductsHelper
+end

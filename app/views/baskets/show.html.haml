@@ -27,3 +27,5 @@
 		%span.h1= number_to_currency(@amount, :delimiter => ",", :precision => 0, :unit => "")
 		%span.h5 円
 	%p.text-right ※ドルは自動で円に換算されます
+
+	= button_to "購入する", purchase_record_products_path(purchase_record_id: @purchase_record.id, basket_id: @basket.id), class: "btn btn-info w-75 mb-5 py-3"
