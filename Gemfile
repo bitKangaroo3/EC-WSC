@@ -52,9 +52,10 @@ gem 'active_decorator'
 # form
 gem 'simple_form'
 gem 'carrierwave', '~> 1.0'
-#hash
+# hash
 gem "hashid-rails", "~> 1.0"
-
+# payment
+gem 'stripe'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
