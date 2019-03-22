@@ -28,24 +28,11 @@
 		%span.h5 円
 	%p.text-right ※ドルは自動で円に換算されます
 
-	= button_to "購入する", purchase_record_products_path(purchase_record_id: @purchase_record.id, basket_id: @basket.id), class: "btn btn-info w-75 mb-5 py-3"
-
-	:erb
-		<%= form_tag charges_path do %>
-			<article>
-				<% if flash[:error].present? %>
-					<div id="error_explanation">
-						<p><%= flash[:error] %></p>
-					</div>
-				<% end %>
-				<label class="amount">
-					<span>Amount: $5.00</span>
-				</label>
-			</article>
-
-			<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-							data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-							data-description="A month's subscription"
-							data-amount="500"
-							data-locale="auto"></script>
-		<% end %>
+	= form_tag charges_path(amount: @amount) do
+		%article
+			- if flash[:error].present?
+				#error_explanation
+					%p= flash[:error]
+			%label.amount
+		%script.stripe-button{"data-amount" => "@amount", "currency" => "jpy", "data-description" => "A stripe test", "data-key" => Rails.configuration.stripe[:publishable_key], "data-locale" => "auto", :src => "https://checkout.stripe.com/checkout.js"}
+		%p.mb-5

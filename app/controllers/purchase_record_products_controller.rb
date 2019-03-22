@@ -1,6 +1,8 @@
 class PurchaseRecordProductsController < ApplicationController
 	def create
-		basket_products = BasketProduct.where(basket_id: params[:basket_id])
+		@basket = Basket.find(current_user.id)
+		@purchase_record = PurchaseRecord.find(current_user.id)
+		basket_products = BasketProduct.where(basket_id: @basket.id)
 		@products = []
 
 		basket_products.each do |basket_product|
@@ -8,8 +10,8 @@ class PurchaseRecordProductsController < ApplicationController
 		end
 
 		@products.each do |product|
-			prp = PurchaseRecordProduct.new(purchase_record_id: params[:purchase_record_id], product_id: product)
-			bp = BasketProduct.find_by(basket_id: params[:basket_id], product_id: product)
+			prp = PurchaseRecordProduct.new(purchase_record_id: @purchase_record.id, product_id: product)
+			bp = BasketProduct.find_by(basket_id: @basket.id, product_id: product)
 
 			PurchaseRecordProduct.transaction do
 				prp.save!
@@ -17,6 +19,7 @@ class PurchaseRecordProductsController < ApplicationController
 			end
 		end
 
-		redirect_to root_path
+		redirect_to new_charge_path
 	end
+
 end
