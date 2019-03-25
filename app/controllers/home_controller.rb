@@ -14,8 +14,10 @@ class HomeController < ApplicationController
 				b = PurchaseRecord.new(user_id: current_user.id)
 				b.save
 			end
+			if current_user.admin?
+				redirect_to admins_root_path
+			end
 		end
-
 		@products = Product.all
 	end
 

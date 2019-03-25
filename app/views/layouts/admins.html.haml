@@ -16,6 +16,8 @@
 			%p= link_to "sign_out", destroy_user_session_path, method: :delete
 			%p= link_to "商品一覧へ", root_path
 			%p= link_to "買い物かごを見る", basket_path
+			%p.h4.text-danger Adminユーザーです
+			%p= link_to "商品登録をする", admins_products_new_path
 
 
 		= yield
