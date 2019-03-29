@@ -2,7 +2,7 @@
 
 %div.product-cards.container
 	%ul.row
-		- @products.each do |product|
+		- @products.reverse.each do |product|
 			%li.col-md-6
 				%div.product-card.bg-secondary
 					= image_tag product.photo.to_s

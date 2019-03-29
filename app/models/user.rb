@@ -14,6 +14,7 @@
 #  unconfirmed_email      :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  admin                  :boolean          default(FALSE), not null
 #
 
 class User < ApplicationRecord
@@ -23,5 +24,6 @@ class User < ApplicationRecord
 				:recoverable, :rememberable, :validatable, :confirmable
 	has_one :basket
 	has_one :purchase_record
+	has_many :products
 
 end

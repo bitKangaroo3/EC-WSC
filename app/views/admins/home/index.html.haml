@@ -1,8 +1,74 @@
+%p.text-center.h1 Admin Dashboad
+%div.container.mb-5.text-center
+	%table.table
+		%tr.h2
+			%td 今までの売上　
+			%td= number_to_currency(@sales_all, :delimiter => ",", :precision => 0, :unit => "") + " 円"
+			%td
+				%button(type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal1") 詳細
+		%tr.h2
+			%td 今月の売上　
+			%td= number_to_currency(@sales_monthly, :delimiter => ",", :precision => 0, :unit => "") + " 円"
+			%td
+				%button(type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal2") 詳細
+
+// modal1
+%div(id="myModal1" class="modal fade"){"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+	.modal-dialog{:role => "document"}
+		.modal-content
+			.modal-header.text-center
+				%h5#exampleModalLabel.modal-title 今までの売上詳細
+				%button.close{"aria-label" => "閉じる", "data-dismiss" => "modal", :type => "button"}
+					%span{"aria-hidden" => "true"} ×
+			.modal-body
+				%div.container.text-center
+					%table.table
+						%tr
+							%th 商品名
+							%th	価格
+							%th 売上日
+						- @product_ids_monthly.zip(@sold_all).each do |id, s|
+							- product = Product.find(id)
+							%tr
+								%td= product.name
+								- ActiveDecorator::Decorator.instance.decorate(product)
+								%td= product.price_unit
+								%td= s.created_at.strftime('%b %d, %Y %H:%M')
+			.modal-footer
+				%button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} 閉じる
+
+
+// modal2
+%div(id="myModal2" class="modal fade"){"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+	.modal-dialog{:role => "document"}
+		.modal-content
+			.modal-header.text-center
+				%h5#exampleModalLabel.modal-title 今月の売上詳細
+				%button.close{"aria-label" => "閉じる", "data-dismiss" => "modal", :type => "button"}
+					%span{"aria-hidden" => "true"} ×
+			.modal-body
+				%div.container.text-center
+					%table.table
+						%tr
+							%th 商品名
+							%th	価格
+							%th 売上日
+						- @product_ids_monthly.zip(@sold_monthly).each do |id, s|
+							- product = Product.find(id)
+							%tr
+								%td= product.name
+								- ActiveDecorator::Decorator.instance.decorate(product)
+								%td= product.price_unit
+								%td= s.created_at.strftime('%b %d, %Y %H:%M')
+			.modal-footer
+				%button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} 閉じる
+
+
 %p.text-center.h1 商品一覧
 
 %div.product-cards.container
 	%ul.row
-		- @products.each do |product|
+		- @products.reverse.each do |product|
 			%li.col-md-6
 				%div.product-card.bg-secondary
 					= image_tag product.photo.to_s

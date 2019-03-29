@@ -11,5 +11,5 @@
 class PurchaseRecord < ApplicationRecord
 	has_many :PurchaseRecordProducts
 	belongs_to :user
-	has_many :Products, through: :PurchaseRecordProducts
+	has_many :Products, through: :purchase_record_products
 end
