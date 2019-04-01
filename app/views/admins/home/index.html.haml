@@ -27,7 +27,7 @@
 							%th 商品名
 							%th	価格
 							%th 売上日
-						- @product_ids_monthly.zip(@sold_all).each do |id, s|
+						- @product_ids_all.zip(@sold_all).each do |id, s|
 							- product = Product.find(id)
 							%tr
 								%td= product.name
